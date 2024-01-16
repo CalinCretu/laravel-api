@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -47,12 +48,12 @@ class ProjectController extends Controller
             'end_date' => 'nullable',
             'status' => 'required',
             'type_id' => 'nullable|exists:types,id',
-            'technologies' => 'exists:technologies,id',
-            'slug' => 'required|unique'
-
+            'technologies' => 'exists:technologies,id'
         ]);
 
         $data = $request->all();
+
+        $data['slug'] = Str::slug($data['name'], '-');
 
         $project = Project::create($data);
 
@@ -96,6 +97,8 @@ class ProjectController extends Controller
         $data = $request->all();
 
         $project->update($data);
+
+        $data['slug'] = Str::slug($data['name'], '-');
 
         if ($request->has('technologies')) {
             $project->technologies()->sync($data['technologies']);

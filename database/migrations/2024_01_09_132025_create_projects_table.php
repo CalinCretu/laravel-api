@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date')->nullable();
-            $table->enum('status', ['pending', 'ongoing', 'completed'])->default('pending');
+            $table->enum('status', ['pending', 'ongoing', 'completed'])->default('pending')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
         });

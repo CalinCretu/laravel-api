@@ -11,6 +11,11 @@
                         value="{{ old('name', $project->name) }}">
                 </div>
                 <div class="mb-3">
+                    <label for="slug" class="form-label">Slug</label>
+                    <input type="text" readonly required class="form-control" name="slug" id="slug"
+                        placeholder="Project Slug Name" value="{{ old('slug', $project->slug) }}">
+                </div>
+                <div class="mb-3">
                     <label for="start_date" class="form-label">Start Date</label>
                     <input type="date" class="form-control" required name="start_date" id="start_date"
                         value="{{ old('start_date', $project->start_date) }}">
