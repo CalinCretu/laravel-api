@@ -4,6 +4,7 @@
         <div class="container">
             <div class="container">
                 <h1>{{ $project->name }}</h1>
+                <p>{{ $project->slug }}</p>
                 @if ($project->type)
                     <p><strong>{{ isset($project->type) ? $project->type->name : '-' }}</strong></p>
                 @endif

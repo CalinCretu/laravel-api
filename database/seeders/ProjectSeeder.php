@@ -8,6 +8,7 @@ use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 class ProjectSeeder extends Seeder
 {
@@ -33,6 +34,7 @@ class ProjectSeeder extends Seeder
             $new_project->end_date = $faker->optional(0.7)->dateTimeThisCentury('+2 years');
             $new_project->status = $faker->randomElement(['pending', 'ongoing', 'completed']);
             $new_project->type_id = $faker->optional()->randomElement($typeIds);
+            $new_project->slug = Str::slug($new_project->name);
 
             $new_project->save();
             $new_project->technologies()->attach($faker->randomElements($technologyIds, null));

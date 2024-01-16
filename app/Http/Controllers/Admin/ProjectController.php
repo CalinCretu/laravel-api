@@ -47,7 +47,8 @@ class ProjectController extends Controller
             'end_date' => 'nullable',
             'status' => 'required',
             'type_id' => 'nullable|exists:types,id',
-            'technologies' => 'exists:technologies,id'
+            'technologies' => 'exists:technologies,id',
+            'slug' => 'required|unique'
 
         ]);
 
