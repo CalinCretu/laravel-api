@@ -25,7 +25,7 @@ class ProjectSeeder extends Seeder
         $technologyIds = $technologies->pluck('id');
 
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 27; $i++) {
             $new_project = new Project();
 
             $new_project->name = $faker->name();
